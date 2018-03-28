@@ -1,0 +1,7 @@
+C:\Users\Wayne Manselle\Anaconda2\envs\belco_tvb\lib\site-packages\tvb\simulator\models\jansen_rit.py:307: RuntimeWarning: overflow encountered in _numba_dfun_jr
+  self.A, self.b, self.B, self.J, self.mu
+C:\Users\Wayne Manselle\Anaconda2\envs\belco_tvb\lib\site-packages\tvb\simulator\models\jansen_rit.py:307: RuntimeWarning: invalid value encountered in _numba_dfun_jr
+  self.A, self.b, self.B, self.J, self.mu
+C:\Users\Wayne Manselle\Anaconda2\envs\belco_tvb\lib\site-packages\tvb\simulator\coupling.py:176: RuntimeWarning: overflow encountered in multiply
+  sum[:, nzr] = numpy.add.reduceat(weights_col * pre, lri, axis=1)
+sim done, took 2748.09500003 seconds

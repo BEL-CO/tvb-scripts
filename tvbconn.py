@@ -6,9 +6,12 @@ from tvb.datatypes.sensors import SensorsEEG
 from tvb.datatypes.projections import ProjectionMatrix, ProjectionSurfaceEEG
 from tvb.simulator.models import WilsonCowan, Generic2dOscillator, ReducedWongWang, JansenRit
 import time
+import os
 
 # zipped directory that contains connectivity/tractography info
-conn_fname = "/home/annajo/git/tvb/tvb-data/tvb_data/berlinSubjects/DH_20120806/connectivity/DH_20120806_Connectivity/DHconn.zip"
+master_path = 'C:/Users/Wayne Manselle/Documents/GitHub/tvb-data/tvb_data/berlinSubjects/DH_20120806/'
+
+conn_fname = os.path.join(master_path, 'DH_20120806_Connectivity.zip')
 conn = connectivity.Connectivity.from_file(conn_fname)
 
 conn.configure()
@@ -19,11 +22,11 @@ plot_connectivity(connectivity=conn)
 # pyplot.show()
 
 # triangulated cortical surface mesh
-ctx_fname = "/home/annajo/git/tvb/tvb-data/tvb_data/berlinSubjects/DH_20120806/cortex/DH_20120806_Surface_Cortex.zip"
+ctx_fname = os.path.join(master_path,'DH_20120806_Surface_Cortex.zip')
 # maps nodes from cortex mesh to brain regions
-region_fname = "/home/annajo/git/tvb/tvb-data/tvb_data/berlinSubjects/DH_20120806/DH_20120806_RegionMapping.txt"
+region_fname = os.path.join(master_path,'DH_20120806_RegionMapping.txt')
 # matlab matrix that describes how waves propagate to the surface
-eeg_fname = "/home/annajo/git/tvb/tvb-data/tvb_data/berlinSubjects/DH_20120806/DH_20120806_ProjectionMatrix.mat"
+eeg_fname = os.path.join(master_path,'DH_20120806_ProjectionMatrix.mat')
 ctx = cortex.Cortex.from_file(source_file=ctx_fname,
     region_mapping_file=region_fname,
     eeg_projection_file=eeg_fname)
@@ -38,7 +41,7 @@ ax.plot_trisurf(x, y, z, triangles=ctx.triangles, alpha=0.1, edgecolor='k')
 print("cortex plot ready")
 
 # unit vectors that describe the location of eeg sensors
-sensoreeg_fname = "/home/annajo/git/tvb/tvb-data/tvb_data/berlinSubjects/DH_20120806/DH_20120806_EEGLocations.txt"
+sensoreeg_fname = os.path.join(master_path,'DH_20120806_EEGLocations.txt')
 
 rm = RegionMapping.from_file(region_fname)
 sensorsEEG = SensorsEEG.from_file(sensoreeg_fname)
